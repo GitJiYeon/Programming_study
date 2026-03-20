@@ -7,21 +7,9 @@
 </head>
 <body>
     <h1 id="numSpace">0</h1>
-    <button onclick="plusClick()">+</button>
-    <button onclick="minusClick()">-</button>
+    <button class="plusButton" onclick="plus()">+</button>
+    <button onclick="minus()">-</button>
 </body>
-<script>
-    let num = 0;
-    function plusClick(){
-        num += 1;
-        document.getElementById('numSpace').innerText = num;
-    }
-
-    function minusClick(){
-        num -= 1;
-        document.getElementById('numSpace').innerText = num;
-    }
-    
-
+<script src="./main.js">
 </script>
 </html>
