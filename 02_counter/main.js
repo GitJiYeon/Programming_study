@@ -5,6 +5,10 @@ plusButton.addEventListener("click", () =>{
         numSpace.innerHTML = num;
 });
 
+const plus = () =>{
+    num++;
+    numSpace.innerHTML = num;
+};
 /*
 let num = 0;
     function plus(){
