@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count</title>
+</head>
+<body>
+    <h1 id="numSpace">0</h1>
+    <button onclick="plusClick()">+</button>
+    <button onclick="minusClick()">-</button>
+</body>
+<script>
+    let num = 0;
+    function plusClick(){
+        num += 1;
+        document.getElementById('numSpace').innerText = num;
+    }
+
+    function minusClick(){
+        num -= 1;
+        document.getElementById('numSpace').innerText = num;
+    }
+    
+
+</script>
+</html>
