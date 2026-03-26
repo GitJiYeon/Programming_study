@@ -1,17 +1,22 @@
 const numSpace = document.getElementById('numSpace');
 const plusButton = document.getElementsByClassName('plusButton')[0];
-let num = 0;
+let num = 100;
 
+numSpace.innerText = num;
+
+function render(){
+    numSpace.innerHTML = num;
+}
 
 const update = (value) =>{
     num+=value;
-    numSpace.innerHTML = num;
+    render();
 };
-const reset = (value) =>{
-    num = 0;
-    numSpace.innerHTML = num;
+const reset = () =>{
+    num = 100;
+    render();
 };
-
+render();
 /* plusButton.addEventListener("click", () =>{
     num += 1;
         numSpace.innerHTML = num;
