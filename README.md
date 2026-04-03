@@ -6,3 +6,6 @@ vanilla, HTML, JavaScript
 npm create vite@latest .
 ```
 ### CounterApp
+- `useState()`
+- `onClick={() => 함수()}`
+- `onClick={() => 함수((이전state) = 이전state + 1)}`
