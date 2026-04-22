@@ -20,11 +20,19 @@ function TodoListApp() {
 
   const addTodo = (text) => setTodos((todos) => [...todos, new Todo(text)]);
 
+  const toggleTodo = (id) => {
+    setTodos((todos) =>
+        //todos에서 하나씩 꺼내 todo. todo의 id와 id가 같으면 기존 todo.isCompleted 값 수정. 아니면 그대로
+        todos.map((todo) =>
+            todo.id === id ? {...todo, isCompleted: !todo.isCompleted} : todo
+        )
+    )
+  }
   return (
     <div className="todo">
       <TodoHeader />
       <TodoAdder addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} />
     </div>
   );
 }

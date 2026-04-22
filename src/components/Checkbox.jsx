@@ -1,10 +1,12 @@
+import { Children } from "react";
+
 export default function Checkbox(props){
-    const {id, ...rest} = props; 
+    const {children, id, ...rest} = props; 
 
     return(
         <>
-            <input className="todo__check" type="checkbox" id={`chk-${id}`}/>
-            <label className="todo__label" htmlFor={`chk-${id}`}>temp text1</label>
+            <input className="todo__check" type="checkbox" id={`chk-${id}`} {...rest}/>
+            <label className="todo__label" htmlFor={`chk-${id}`}>{children}</label>
         </>
     )
 }
