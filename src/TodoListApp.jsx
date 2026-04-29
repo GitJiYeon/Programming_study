@@ -6,7 +6,7 @@ import TodoHeader from "./components/TodoHeader.jsx";
 import TodoAdder from "./components/TodoAdder.jsx";
 import TodoItems from "./components/TodoItem.jsx";
 import TodoList from "./components/TodoList.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 class Todo {
   constructor(text) {
     this.id = Date.now(); // 할 일 ID : 고유의 값 == new Date().getTime()
@@ -15,10 +15,26 @@ class Todo {
   }
 }
 
-function TodoListApp() {
-  const [todos, setTodos] = useState([]);
+const TODOS_STORAGE_KEY = 'todos';
 
-  const addTodo = (text) => setTodos((todos) => [...todos, new Todo(text)]);
+function TodoListApp() {
+  //LocalStorage에 저장된 할 일 목록 불러오기
+  //LocalStorage에 저장된게 있으면, todos에 대입, 없으면 []
+  const initTodos = () => {
+    const savedTodos = localStorage.getItem(TODOS_STORAGE_KEY);
+    return savedTodos ? JSON.stringify(savedTodos) : [];
+  }
+
+  const [todos, setTodos] = useState(initTodos); //initTodos 함수는 react 처음 한번 호출
+  //LocalStorage에 할 일 목록 저장하기
+  useEffect(() => {
+    localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]); //todos가 바뀔 때마다, LocalStorage에 저장
+  
+  const addTodo = (text) => setTodos((todos) => [
+    ...todos, 
+    new Todo(text)
+  ]);
 
   const toggleTodo = (id) => {
     setTodos((todos) =>
